@@ -1,9 +1,12 @@
 import Link from 'next/link';
+import { useState } from 'react';
 
 import styles from './styles.module.css';
 
 export default function HamMenu({links})  {
 
+    const [isToggled, setToggled] = useState(false);
+    const toggleTrueFalse = () => setToggled(!isToggled);
     let menuItems = [];
     let i = 0;
     links.forEach((item) => {
@@ -20,7 +23,7 @@ export default function HamMenu({links})  {
         );
     });
     return (
-        <nav className={styles.flexContainer}>
+        <nav className={styles.flexContainer} onClick={toggleTrueFalse}>
             {/* hamburger icon */}
             <div className={styles.item}>
             </div>
@@ -29,6 +32,7 @@ export default function HamMenu({links})  {
             <div className={styles.item}>
             </div>
             <ul className={styles.menuItems}>
+                { isToggled ? 'kuk' : 'nokuk'}
                 {menuItems}
             </ul>
 
