@@ -9,7 +9,10 @@ export default function HamMenu({links})  {
     links.forEach((item) => {
 
         menuItems.push(
-           <li key={i+'listmenuitem'}>
+           <li
+               key={i+'listmenuitem'}
+               className={styles.menuItem}
+           >
              <Link href={item.href}>
                  <a>{item.name}</a>
              </Link>
@@ -17,9 +20,15 @@ export default function HamMenu({links})  {
         );
     });
     return (
-        <nav className="container">
-            navigation
-            <ul>
+        <nav className={styles.flexContainer}>
+            {/* hamburger icon */}
+            <div className={styles.item}>
+            </div>
+            <div className={styles.item}>
+            </div>
+            <div className={styles.item}>
+            </div>
+            <ul className={styles.menuItems}>
                 {menuItems}
             </ul>
 
