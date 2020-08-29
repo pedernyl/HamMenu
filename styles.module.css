@@ -24,6 +24,10 @@ ul.menuItems {
     list-style: none;
 }
 
+.hidden {
+    display: none;
+}
+
 li.menuItem {
     font-size: 1.2rem;
 }
@@ -46,5 +50,15 @@ li.menuItem {
         margin: 3rem;
         margin-top: 30px;
         font-size: 3rem;
+    }
+
+    .hidden {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        list-style: none;
     }
 }

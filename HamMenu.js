@@ -5,10 +5,16 @@ import styles from './styles.module.css';
 
 export default function HamMenu({links})  {
 
-    const [isToggled, setToggled] = useState(false);
-    const toggleTrueFalse = () => setToggled(!isToggled);
+    const [isMenuOpen, setMenuToggled] = useState(false);
+    const toggleTrueFalse = () => setMenuToggled(!isMenuOpen);
+    //check if menu closed
+    const menuItemsClass = isMenuOpen ? styles.menuItems : styles.hidden;
+
+    //console.log(window.innerHeight);
+
     let menuItems = [];
     let i = 0;
+    //generate the menu items
     links.forEach((item) => {
 
         menuItems.push(
@@ -23,16 +29,17 @@ export default function HamMenu({links})  {
         );
     });
     return (
-        <nav className={styles.flexContainer} onClick={toggleTrueFalse}>
+        <nav className={styles.flexContainer}>
             {/* hamburger icon */}
-            <div className={styles.item}>
+            <div onClick={toggleTrueFalse}>
+                <div className={styles.item}>
+                </div>
+                <div className={styles.item}>
+                </div>
+                <div className={styles.item}>
+                </div>
             </div>
-            <div className={styles.item}>
-            </div>
-            <div className={styles.item}>
-            </div>
-            <ul className={styles.menuItems}>
-                { isToggled ? 'kuk' : 'nokuk'}
+            <ul className={menuItemsClass}>
                 {menuItems}
             </ul>
 
