@@ -3,20 +3,35 @@ import { useState } from 'react';
 
 import styles from './styles.module.css';
 
-export default function HamMenu({links, colors})  {
+/*
+    Settings Props:
+      Shall have following format:
+        settings: {
+          links: [
+            {
+              name: 'name of link',
+              href: 'url to link'
+            }
+          ],
+          colors: {
+            navBg: 'color for the background of navbar',
+            textColor: 'color for the text inside navbar',
+            borderColor: 'set to color for border - if no border just dont send this prop'
+          }
 
-    console.log(colors.navBg);
+ */
+
+export default function HamMenu({ settings })  {
+
     const [isMenuOpen, setMenuToggled] = useState(false);
     const toggleTrueFalse = () => setMenuToggled(!isMenuOpen);
     //check if menu closed
     const menuItemsClass = isMenuOpen ? styles.menuItems : styles.hidden;
 
-    //console.log(window.innerHeight);
-
     let menuItems = [];
     let i = 0;
     //generate the menu items
-    links.forEach((item) => {
+    settings.links.forEach((item) => {
 
         menuItems.push(
            <li
@@ -47,10 +62,10 @@ export default function HamMenu({links, colors})  {
             </ul>
         <style jsx>{`
         .userProperties {
-          background: ${colors.navBg !== undefined ? colors.navBg : '#333'};
-          color: ${colors.textColor !== undefined ? colors.textColor : '#fff'};
-          border: ${colors.borderColor !== undefined ? 
-            colors.borderColor + ' 1px solid' :
+          background: ${settings.colors.navBg !== undefined ? settings.colors.navBg : '#333'};
+          color: ${settings.colors.textColor !== undefined ? settings.colors.textColor : '#fff'};
+          border: ${settings.colors.borderColor !== undefined ? 
+            settings.colors.borderColor + ' 1px solid' :
             'none'};
         }
         `}</style>
