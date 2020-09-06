@@ -12,19 +12,6 @@ import styles from './styles.module.css';
               href: 'url to link'
             }
           ],
-
- */
-
-/*
-    Settings Props:
-      Shall have following format:
-        settings: {
-          links: [
-            {
-              name: 'name of link',
-              href: 'url to link'
-            }
-          ],
           colors: {
             navBg: 'color for the background of navbar',
             textColor: 'color for the text inside navbar',
@@ -34,6 +21,27 @@ import styles from './styles.module.css';
  */
 
 export default function HamMenu({ settings })  {
+
+    //check if settings is set
+    //Colors
+    let navBg = null;
+    let textColor = null;
+    let borderColor = null;
+    if (typeof settings.colors === 'undefined') {
+        navBg = '#fff';
+        textColor = '#333';
+        borderColor = '#333';
+    } else {
+        navBg = typeof settings.colors.navBg === 'undefined' ? '#fff' : settings.colors.navBg;
+        textColor = typeof settings.colors.textColor === 'undefined' ? '#333' : settings.colors.textColor;
+        borderColor = typeof settings.colors.borderColor === 'undefined'
+            ? 'none'
+            : `1px solid ${settings.colors.borderColor}`;
+
+    }
+
+
+    //const color = settings.colors.navBg !== undefined ? settings.colors.navBg : '#333';
 
     const [isMenuOpen, setMenuToggled] = useState(false);
     const toggleTrueFalse = () => setMenuToggled(!isMenuOpen);
@@ -72,15 +80,15 @@ export default function HamMenu({ settings })  {
             <ul className={menuItemsClass}>
                 {menuItems}
             </ul>
-        <style jsx>{`
+            <style jsx>{`
         .userProperties {
-          background: ${settings.colors.navBg !== undefined ? settings.colors.navBg : '#333'};
-          color: ${settings.colors.textColor !== undefined ? settings.colors.textColor : '#fff'};
-          border: ${settings.colors.borderColor !== undefined ? 
-            settings.colors.borderColor + ' 1px solid' :
-            'none'};
+          background: ${navBg};
+          color: ${textColor};
+          border-bottom: ${borderColor}; 
+        'none'};
         }
         `}</style>
         </nav>
+
     );
 }
