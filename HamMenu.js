@@ -3,8 +3,9 @@ import { useState } from 'react';
 
 import styles from './styles.module.css';
 
-export default function HamMenu({links})  {
+export default function HamMenu({links, colors})  {
 
+    console.log(colors.navBg);
     const [isMenuOpen, setMenuToggled] = useState(false);
     const toggleTrueFalse = () => setMenuToggled(!isMenuOpen);
     //check if menu closed
@@ -19,17 +20,19 @@ export default function HamMenu({links})  {
 
         menuItems.push(
            <li
-               key={i+'listmenuitem'}
+               key={i++ +'listmenuitem'}
                className={styles.menuItem}
            >
              <Link href={item.href}>
                  <a>{item.name}</a>
              </Link>
            </li>
+
         );
     });
+    const black = '#000';
     return (
-        <nav className={styles.flexContainer}>
+        <nav className={styles.flexContainer + ' ' + 'userProperties'}>
             {/* hamburger icon */}
             <div onClick={toggleTrueFalse}>
                 <div className={styles.item}>
@@ -42,7 +45,15 @@ export default function HamMenu({links})  {
             <ul className={menuItemsClass}>
                 {menuItems}
             </ul>
-
+        <style jsx>{`
+        .userProperties {
+          background: ${colors.navBg !== undefined ? colors.navBg : '#333'};
+          color: ${colors.textColor !== undefined ? colors.textColor : '#fff'};
+          border: ${colors.borderColor !== undefined ? 
+            colors.borderColor + ' 1px solid' :
+            'none'};
+        }
+        `}</style>
         </nav>
     );
 }
