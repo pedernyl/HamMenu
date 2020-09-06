@@ -1,0 +1,11 @@
+{
+  "name": "hammenu",
+  "version": "1.0.0",
+  "description": "hamburger menu as a react component for use in next.js",
+  "main": "HamMenu.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Peder Nylander",
+  "license": "MIT"
+}
