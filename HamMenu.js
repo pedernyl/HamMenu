@@ -2,6 +2,18 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import styles from './styles.module.css';
+/*
+    Settings Props:
+      Shall have following format:
+        settings: {
+          links: [
+            {
+              name: 'name of link',
+              href: 'url to link'
+            }
+          ],
+
+ */
 
 export default function HamMenu({links})  {
 
